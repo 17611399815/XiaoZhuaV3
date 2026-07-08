@@ -583,7 +583,7 @@ function MobileAppContent() {
   const [paymentMethod, setPaymentMethod] = useState<'wechat' | 'alipay' | 'bank'>('wechat');
 
   // Standalone Flutter Workspace state
-  const [workspaceTab, setWorkspaceTab] = useState<'simulator' | 'explorer' | 'compile_spec'>('explorer');
+  const [workspaceTab, setWorkspaceTab] = useState<'simulator' | 'explorer' | 'compile_spec'>('simulator');
   const [selectedFilePath, setSelectedFilePath] = useState<string>('mobile/lib/main.dart');
   const [fileContent, setFileContent] = useState<string>('');
   const [fileLoading, setFileLoading] = useState<boolean>(false);
@@ -1391,11 +1391,11 @@ function MobileAppContent() {
                 fontWeight: 700,
                 border: '1px solid rgba(255, 178, 63, 0.3)'
               }}>
-                Flutter Target: iOS 17.0+ | Android 10+ | HarmonyOS NEXT (原生多端)
+                Flutter Target: iOS 17.0+ | Android 10+ | HarmonyOS NEXT (三端)
               </span>
             </div>
             <span style={{ fontSize: 11, color: '#888', display: 'block', marginTop: 2 }}>
-              小爪 APP 独立开发控制台 · Flutter 原生工程与 H5 小程序联调沙箱
+              小爪 APP 移动端独立开发控制台 · 交互设计与 Flutter 原生源码管理器
             </span>
           </div>
         </div>
@@ -1409,26 +1409,6 @@ function MobileAppContent() {
             padding: 4,
             border: '1px solid #32323A'
           }}>
-            <button
-              onClick={() => setWorkspaceTab('explorer')}
-              style={{
-                background: workspaceTab === 'explorer' ? '#FFB23F' : 'transparent',
-                color: workspaceTab === 'explorer' ? '#121214' : '#E6E6E6',
-                border: 'none',
-                borderRadius: 8,
-                padding: '6px 14px',
-                fontSize: 12,
-                fontWeight: 800,
-                cursor: 'pointer',
-                transition: 'all 0.2s',
-                display: 'flex',
-                alignItems: 'center',
-                gap: 6
-              }}
-            >
-              <span>📂</span>
-              <span>Flutter 独立原生端</span>
-            </button>
             <button
               onClick={() => setWorkspaceTab('simulator')}
               style={{
@@ -1447,7 +1427,27 @@ function MobileAppContent() {
               }}
             >
               <span>📱</span>
-              <span>H5 小程序沙箱</span>
+              <span>仿真手机模拟器</span>
+            </button>
+            <button
+              onClick={() => setWorkspaceTab('explorer')}
+              style={{
+                background: workspaceTab === 'explorer' ? '#FFB23F' : 'transparent',
+                color: workspaceTab === 'explorer' ? '#121214' : '#E6E6E6',
+                border: 'none',
+                borderRadius: 8,
+                padding: '6px 14px',
+                fontSize: 12,
+                fontWeight: 800,
+                cursor: 'pointer',
+                transition: 'all 0.2s',
+                display: 'flex',
+                alignItems: 'center',
+                gap: 6
+              }}
+            >
+              <span>📂</span>
+              <span>Flutter 源码浏览器</span>
             </button>
             <button
               onClick={() => setWorkspaceTab('compile_spec')}
@@ -1467,13 +1467,13 @@ function MobileAppContent() {
               }}
             >
               <span>🛠️</span>
-              <span>Flutter 编译构建规范</span>
+              <span>跨平台编译与打包规范</span>
             </button>
           </div>
 
           <div style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: 11, color: '#888' }}>
             <span style={{ width: 8, height: 8, borderRadius: '50%', background: '#10B981', display: 'inline-block' }} />
-            <span>独立原生移动端就绪</span>
+            <span>独立移动端就绪</span>
           </div>
         </div>
       </div>
@@ -1498,11 +1498,11 @@ function MobileAppContent() {
               <div>
                 <div style={{ marginBottom: 24 }}>
                   <span style={{ fontSize: 11, fontWeight: 900, color: '#FFB23F', textTransform: 'uppercase', letterSpacing: '1px', display: 'block', marginBottom: 4 }}>
-                    H5 Mini-Program Sandbox
+                    Simulation Controller
                   </span>
-                  <h3 style={{ margin: 0, fontSize: 16, fontWeight: 900, color: '#FFF' }}>H5 小程序沙箱联调</h3>
+                  <h3 style={{ margin: 0, fontSize: 16, fontWeight: 900, color: '#FFF' }}>模拟账户快捷联调</h3>
                   <p style={{ fontSize: 12, color: '#A0A0A5', marginTop: 6, lineHeight: 1.5 }}>
-                    本沙箱专为 H5 轻量化小程序生态设计，与独立的原生 Flutter 移动端保持架构解耦，共享同一个安全 RESTful 交互后端。
+                    此测试网关支持模拟真实短信网络。登录后，所有记录（体重、记账等）均会向服务端发起安全 RESTful 交互。
                   </p>
                 </div>
 
@@ -1562,20 +1562,20 @@ function MobileAppContent() {
                     <span style={{ fontWeight: 800, fontSize: 12, color: '#FFB23F' }}>Gemini AI 智能大脑已就绪</span>
                   </div>
                   <p style={{ fontSize: 11, color: '#A0A0A5', margin: 0, lineHeight: 1.5 }}>
-                    中央 AI 系统已直连 <b>Gemini 3.5-flash</b> 极速推理引擎！小程序沙箱及 Flutter 端均可使用相同服务。
+                    中央 AI 系统已直连 <b>Gemini 3.5-flash</b> 极速推理引擎！助理界面支持深度理解爱宠的健康特征和用药病史，回答专业、精确。
                   </p>
                 </div>
 
                 <div style={{ background: 'rgba(255, 178, 63, 0.05)', padding: 14, borderRadius: 12, border: '1px dashed rgba(255, 178, 63, 0.2)' }}>
-                  <span style={{ fontWeight: 800, fontSize: 11, color: '#FFB23F', display: 'block', marginBottom: 4 }}>💡 原生端与小程序关系</span>
+                  <span style={{ fontWeight: 800, fontSize: 11, color: '#FFB23F', display: 'block', marginBottom: 4 }}>💡 架构同步</span>
                   <span style={{ fontSize: 11, color: '#A0A0A5', lineHeight: 1.4 }}>
-                    小爪 App 原生端完全基于 <b>Flutter</b> 独立开发（代码保存在独立的 `mobile` 目录），此处 H5 仅用于微信小程序与快捷网页沙箱，两者独立并存。
+                    您在右侧模拟器进行的所有交互 (包括积分商城搜索、添加补剂筛选、宠物建档)，皆以 Flutter 的原生 View 接口映射逻辑进行。
                   </span>
                 </div>
               </div>
 
               <div style={{ borderTop: '1px solid #2D2D34', paddingTop: 16, marginTop: 16, fontSize: 11, color: '#666' }}>
-                <span>© XiaoZhua App Studio · 独立移动端与 H5 混合架构</span>
+                <span>© XiaoZhua App Studio · 移动研发工作空间</span>
               </div>
             </div>
 
